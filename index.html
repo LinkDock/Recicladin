@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECICLADIN - O Ciclo que Renova</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        recicladin: {
+                            green: '#2E7D32',
+                            blue: '#1565C0',
+                            lightGreen: '#66BB6A',
+                            bg: '#F5F7F6',
+                            text: '#212121',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Montserrat', 'Poppins', 'sans-serif'],
+                    }
+                }
+            }
+            
+        }
+        
+        
+    </script>
+    <style>
+        body { background-color: #F5F7F6; color: #212121; font-family: 'Inter', sans-serif; }
+        .font-display { font-family: 'Montserrat', sans-serif; }
+        .btn-primary {
+            background-color: #2E7D32; color: white; padding: 0.75rem 1.5rem; border-radius: 9999px;
+            font-weight: 600; transition: all 0.3s; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary:hover { background-color: rgba(46, 125, 50, 0.9); transform: scale(1.05); }
+        .btn-secondary {
+            background-color: #1565C0; color: white; padding: 0.75rem 1.5rem; border-radius: 9999px;
+            font-weight: 600; transition: all 0.3s; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .btn-secondary:hover { background-color: rgba(21, 101, 192, 0.9); transform: scale(1.05); }
+        .btn-outline {
+            border: 2px solid #2E7D32; color: #2E7D32; padding: 0.75rem 1.5rem; border-radius: 9999px;
+            font-weight: 600; transition: all 0.3s;
+        }
+        .btn-outline:hover { background-color: #2E7D32; color: white; transform: scale(1.05); }
+        .glass-card { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.2); }
+        @keyframes pulse-soft { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .animate-pulse-soft { animation: pulse-soft 2s infinite; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <img src="https://i.postimg.cc/BnfsTPfM/logomarca-recicladin-Copia-2-removebg-preview.png" alt="Recicladin Logo" class="h-16 w-auto onerror="this.src='https://i.postimg.cc/sDJjvSjF/logomarca-recicladin.png'">
+                </div>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#como-funciona" class="text-sm font-medium text-gray-600 hover:text-recicladin-green transition-colors">Como Funciona</a>
+                    <a href="#impacto" class="text-sm font-medium text-gray-600 hover:text-recicladin-green transition-colors">Impacto</a>
+                    <a href="#maquinas-realtime" class="text-sm font-medium text-gray-600 hover:text-recicladin-green transition-colors">Monitoramento</a>
+                    <a href="#parceiros" class="text-sm font-medium text-gray-600 hover:text-recicladin-green transition-colors">Parceiros</a>
+                    <a href="#sobre" class="text-sm font-medium text-gray-600 hover:text-recicladin-green transition-colors">Sobre</a>
+                    <button class="btn-primary !py-2 !px-5 !text-sm">Criar Conta</button>
+                </div>
+                <button class="md:hidden text-recicladin-text" onclick="toggleMobileMenu()">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-4 py-6 space-y-4 shadow-lg">
+            <a href="#como-funciona" class="block text-base font-medium text-gray-600">Como Funciona</a>
+            <a href="#impacto" class="block text-base font-medium text-gray-600">Impacto</a>
+            <a href="#maquinas-realtime" class="block text-base font-medium text-gray-600">Monitoramento</a>
+            <a href="#parceiros" class="block text-base font-medium text-gray-600">Parceiros</a>
+            <a href="#sobre" class="block text-base font-medium text-gray-600">Sobre</a>
+            <button class="w-full btn-primary">Criar Conta</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-recicladin-lightGreen/10 blur-[120px] rounded-full -z-10"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-recicladin-blue/5 blur-[120px] rounded-full -z-10"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-recicladin-lightGreen/10 border border-recicladin-lightGreen/20 text-recicladin-green text-xs font-bold mb-6">
+                        <i data-lucide="shield-check" class="w-3 h-3"></i>
+                        <span>STARTUP AMBIENTAL BRASILEIRA</span>
+                    </div>
+                    <h1 class="text-5xl lg:text-7xl font-display text-recicladin-text leading-[1.1] mb-6">
+                        Transformando <span class="text-recicladin-green">plástico</span> em oportunidade.
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-10 max-w-lg leading-relaxed">
+                        Tecnologia inteligente que gera renda, reduz resíduos e moderniza cidades através da coleta automatizada via IA.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#como-funciona" class="btn-primary flex items-center gap-2">
+                            Como Funciona <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#parceiros" class="btn-outline">Seja um Parceiro</a>
+                    </div>
+                    <div class="mt-12 flex items-center gap-8">
+                        <div class="flex -space-x-3">
+                            <img src="https://i.pravatar.cc/150?u=1" class="w-10 h-10 rounded-full border-2 border-white">
+                            <img src="https://i.pravatar.cc/150?u=2" class="w-10 h-10 rounded-full border-2 border-white">
+                            <img src="https://i.pravatar.cc/150?u=3" class="w-10 h-10 rounded-full border-2 border-white">
+                            <div class="w-10 h-10 rounded-full border-2 border-white bg-recicladin-blue flex items-center justify-center text-[10px] text-white font-bold">+2k</div>
+                        </div>
+                        <p class="text-xs text-gray-500 font-medium">
+                            <span class="text-recicladin-text font-bold">+2.000 usuários</span> já estão <br> transformando o futuro.
+                        </p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="relative z-10 w-full max-w-[450px] mx-auto">
+                        <div class="aspect-[3/4] bg-white rounded-[3rem] shadow-2xl border border-gray-100 overflow-hidden relative group">
+                            <img src="https://picsum.photos/seed/machine/800/1200" alt="Machine" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent flex flex-col justify-end p-8 text-white">
+                                <p class="text-xs font-bold opacity-70 uppercase">Tecnologia de Ponta</p>
+                                <p class="text-sm font-bold">Máquina Inteligente v2.0</p>
+                            </div>
+                        </div>
+                        <!-- Floating Elements -->
+                        <div class="absolute -right-8 top-1/4 bg-white p-4 rounded-2xl shadow-xl border border-gray-50 z-20 hidden md:block animate-bounce" style="animation-duration: 5s;">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-recicladin-blue"><i data-lucide="globe"></i></div>
+                                <div><p class="text-[10px] text-gray-400 font-bold uppercase">Impacto Global</p><p class="text-sm font-bold">Net Zero 2030</p></div>
+                            </div>
+                        </div>
+                        <div class="absolute -left-8 bottom-1/4 bg-white p-4 rounded-2xl shadow-xl border border-gray-50 z-20 hidden md:block animate-bounce" style="animation-duration: 5s;">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center text-recicladin-green"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-recycle w-6 h-6" aria-hidden="true"><path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5"></path><path d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12"></path><path d="m14 16-3 3 3 3"></path><path d="M8.293 13.596 7.196 9.5 3.1 10.598"></path><path d="m9.344 5.811 1.093-1.892A1.83 1.83 0 0 1 11.985 3a1.784 1.784 0 0 1 1.546.888l3.943 6.843"></path><path d="m13.378 9.633 4.096 1.098 1.097-4.096"></path></svg></div>
+                                <div><p class="text-[10px] text-gray-400 font-bold uppercase">PET COLETADO</p><p class="text-sm font-bold">18.250 kg/ano</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Como Funciona -->
+    <section id="como-funciona" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-display text-recicladin-text mb-4">Como Funciona</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">Transformar lixo em valor nunca foi tão simples e tecnológico.</p>
+          </div>
+      
+          <!-- Container com isolate para garantir que o z-index negativo da linha funcione -->
+          <div class="relative isolate grid grid-cols-1 md:grid-cols-5 gap-8">
+            
+            <!-- Linha Conectora (visível apenas em md+) -->
+            <!-- O top-8 alinha exatamente no centro do ícone de 16 (h-16 / 2) -->
+            <div class="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-recicladin-lightGreen/20 z-[-1]"></div>
+      
+            <!-- Passo 1 -->
+            <div class="text-center flex flex-col items-center">
+              <div class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center text-recicladin-green mb-6 border border-recicladin-lightGreen/20 shadow-sm">
+                <i data-lucide="smartphone"></i>
+              </div>
+              <h3 class="font-display text-lg mb-2">Cadastro na Máquina</h3>
+              <p class="text-sm text-gray-500">Identifique-se rapidamente usando seu QR Code ou CPF na tela da máquina.</p>
+            </div>
+      
+            <!-- Passo 2 -->
+            <div class="text-center flex flex-col items-center">
+              <div class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center text-recicladin-green mb-6 border border-recicladin-lightGreen/20 shadow-sm">
+                <i data-lucide="recycle"></i>
+              </div>
+              <h3 class="font-display text-lg mb-2">Inserção da Garrafa</h3>
+              <p class="text-sm text-gray-500">Coloque suas garrafas PET vazias na abertura indicada.</p>
+            </div>
+      
+            <!-- Passo 3 -->
+            <div class="text-center flex flex-col items-center">
+              <div class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center text-recicladin-green mb-6 border border-recicladin-lightGreen/20 shadow-sm">
+                <i data-lucide="zap"></i>
+              </div>
+              <h3 class="font-display text-lg mb-2">Análise por IA</h3>
+              <p class="text-sm text-gray-500">Nossa inteligência artificial identifica o material e valida a integridade em segundos.</p>
+            </div>
+      
+            <!-- Passo 4 -->
+            <div class="text-center flex flex-col items-center">
+              <div class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center text-recicladin-green mb-6 border border-recicladin-lightGreen/20 shadow-sm">
+                <i data-lucide="check-circle"></i>
+              </div>
+              <h3 class="font-display text-lg mb-2">Aprovação Instantânea</h3>
+              <p class="text-sm text-gray-500">Receba a confirmação imediata do processamento.</p>
+            </div>
+      
+            <!-- Passo 5 -->
+            <div class="text-center flex flex-col items-center">
+              <div class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center text-recicladin-green mb-6 border border-recicladin-lightGreen/20 shadow-sm">
+                <i data-lucide="banknote"></i>
+              </div>
+              <h3 class="font-display text-lg mb-2">Pagamento Imediato</h3>
+              <p class="text-sm text-gray-500">Escolha entre saldo digital, PIX ou retirada em dinheiro na hora.</p>
+            </div>
+      
+          </div>
+        </div>
+      </section>
+      
+      
+
+    <!-- Impacto Ambiental -->
+    <section id="impacto" class="py-24 bg-recicladin-lightGreen/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-display text-recicladin-text mb-4">Impacto Ambiental Mensurável</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Nossa tecnologia regenera o ecossistema urbano.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-recicladin-lightGreen/20 text-center">
+                    <div class="text-recicladin-green flex justify-center mb-6"><i data-lucide="recycle" class="w-8 h-8"></i></div>
+                    <div class="text-3xl font-bold text-recicladin-text mb-2"><span class="counter" data-target="18250">0</span><span class="text-lg ml-1 text-recicladin-green">kg</span></div>
+                    <h4 class="font-display text-sm font-bold mb-3 uppercase tracking-wider">PET Reaproveitados/Ano</h4>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-recicladin-lightGreen/20 text-center">
+                    <div class="text-recicladin-green flex justify-center mb-6"><i data-lucide="leaf" class="w-8 h-8"></i></div>
+                    <div class="text-3xl font-bold text-recicladin-text mb-2"><span class="counter" data-target="45000">0</span><span class="text-lg ml-1 text-recicladin-green">kg</span></div>
+                    <h4 class="font-display text-sm font-bold mb-3 uppercase tracking-wider">Redução de CO₂</h4>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-recicladin-lightGreen/20 text-center">
+                    <div class="text-recicladin-green flex justify-center mb-6"><i data-lucide="droplets" class="w-8 h-8"></i></div>
+                    <div class="text-3xl font-bold text-recicladin-text mb-2"><span class="counter" data-target="1240">0</span><span class="text-lg ml-1 text-recicladin-green">pts</span></div>
+                    <h4 class="font-display text-sm font-bold mb-3 uppercase tracking-wider">Descarte Evitado</h4>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-recicladin-lightGreen/20 text-center">
+                    <div class="text-recicladin-green flex justify-center mb-6"><i data-lucide="bug" class="w-8 h-8"></i></div>
+                    <div class="text-3xl font-bold text-recicladin-text mb-2"><span class="counter" data-target="85">0</span><span class="text-lg ml-1 text-recicladin-green">%</span></div>
+                    <h4 class="font-display text-sm font-bold mb-3 uppercase tracking-wider">Redução de Doenças</h4>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- Monitoramento em Tempo Real (Carousel) -->
+  <!-- MONITORAMENTO EM TEMPO REAL -->
+<section id="maquinas-realtime" class="py-24 bg-recicladin-bg overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-display text-recicladin-text mb-4">Monitoramento em Tempo Real</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">Acompanhe o desempenho de cada unidade RECICLADIN.</p>
+        </div>
+        <div class="relative">
+            <div id="carousel-container" class="bg-white rounded-[2.5rem] shadow-2xl border border-gray-100 p-8 md:p-12">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="p-3 bg-recicladin-lightGreen/10 rounded-2xl text-recicladin-green"><i data-lucide="map-pin"></i></div>
+                            <div>
+                                <h3 id="machine-name" class="text-2xl font-display text-recicladin-text">Supermercado Central</h3>
+                                <p id="machine-address" class="text-sm text-gray-400">Av. Getúlio Vargas, 450</p>
+                            </div>
+                        </div>
+                        <div class="space-y-8">
+                            <div class="grid grid-cols-2 gap-6">
+                                <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                                    <p class="text-[10px] text-gray-400 font-bold uppercase mb-2 tracking-wider">Histórico Acumulado</p>
+                                    <div class="text-2xl font-bold text-recicladin-text"><span id="machine-total">12.450</span> <span class="text-xs text-gray-400">PETs</span></div>
+                                </div>
+                                <div class="bg-recicladin-green/5 p-6 rounded-2xl border border-recicladin-green/10">
+                                    <p class="text-[10px] text-recicladin-green font-bold uppercase mb-2 tracking-wider">Este Mês</p>
+                                    <div class="text-2xl font-bold text-recicladin-green"><span id="machine-month">2.150</span> <span class="text-xs opacity-70">PETs</span></div>
+                                </div>
+                            </div>
+                            <div class="bg-recicladin-text p-6 rounded-2xl text-white relative overflow-hidden">
+                                <div class="relative z-10">
+                                    <div class="flex items-center gap-2 mb-4">
+                                        <i data-lucide="activity" class="w-4 h-4 text-recicladin-lightGreen animate-pulse"></i>
+                                        <span class="text-[10px] font-bold uppercase tracking-widest">Atividade Real-Time</span>
+                                    </div>
+                                    <div class="flex items-end gap-4">
+                                        <div id="realtime-val" class="text-4xl font-bold">3</div>
+                                        <div class="text-xs opacity-60 mb-1">Garrafas sendo processadas agora</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative aspect-square bg-gray-50 rounded-[2rem] overflow-hidden">
+                        <img id="machine-img" src="https://picsum.photos/seed/machine-1/800/800" class="w-full h-full object-cover grayscale">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-8">
+                            <h4 id="machine-id" class="text-white text-xl font-display">Ponto de Coleta #01</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Carousel Controls -->
+            <div class="flex justify-center gap-4 mt-12">
+                <button onclick="prevMachine()" class="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center text-recicladin-text hover:bg-recicladin-green hover:text-white transition-all"><i data-lucide="chevron-left"></i></button>
+                <button onclick="nextMachine()" class="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center text-recicladin-text hover:bg-recicladin-green hover:text-white transition-all"><i data-lucide="chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Parceiros e Proposta -->
+    <section id="parceiros" class="py-24 bg-recicladin-text text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-display mb-6">Leve a RECICLADIN para sua cidade.</h2>
+                    <p class="text-gray-400 text-lg mb-8">Seja um ponto estratégico de renovação. Nossas máquinas inteligentes são o elo entre a sustentabilidade e o desenvolvimento econômico local.</p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="shield-check" class="text-recicladin-lightGreen"></i>
+                            <div><h4 class="font-bold text-sm">ESG na Prática</h4><p class="text-xs text-gray-500">Resultados mensuráveis para seu relatório de sustentabilidade.</p></div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="globe" class="text-recicladin-blue"></i>
+                            <div><h4 class="font-bold text-sm">Marketing Verde</h4><p class="text-xs text-gray-500">Fortaleça sua marca como agente de mudança positiva.</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white/5 p-8 rounded-3xl border border-white/10">
+                    <h3 class="text-xl font-display mb-6">Solicitar Proposta Estratégica</h3>
+                    <form class="space-y-4">
+                        <input type="text" placeholder="Nome do Responsável" class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-recicladin-lightGreen">
+                        <input type="email" placeholder="E-mail Corporativo" class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-recicladin-lightGreen">
+                        <select class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-sm focus:outline-none text-gray-400">
+                            <option>Tipo de Parceria</option>
+                            <option>Prefeitura</option>
+                            <option>Empresa Privada</option>
+                        </select>
+                        <button type="button" class="w-full btn-primary mt-4">Enviar Solicitação</button>
+                    </form>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="p-6 rounded-2xl bg-white/5 border border-white/10"><i data-lucide="building-2" class="text-recicladin-lightGreen mb-4"></i><h4 class="font-display mb-2">Supermercados</h4><p class="text-sm text-gray-400">Atraia fluxo qualificado e ofereça benefícios reais aos seus clientes fiéis.</p></div>
+                <div class="p-6 rounded-2xl bg-white/5 border border-white/10"><i data-lucide="graduation-cap" class="text-recicladin-lightGreen mb-4"></i><h4 class="font-display mb-2">Escolas</h4><p class="text-sm text-gray-400">Educação ambiental na prática, gerando recursos para projetos estudantis.</p></div>
+                <div class="p-6 rounded-2xl bg-white/5 border border-white/10"><i data-lucide="home" class="text-recicladin-lightGreen mb-4"></i><h4 class="font-display mb-2">Condomínios</h4><p class="text-sm text-gray-400">Modernize a gestão de resíduos e reduza custos de manutenção predial.</p></div>
+                <div class="p-6 rounded-2xl bg-white/5 border border-white/10"><i data-lucide="landmark" class="text-recicladin-lightGreen mb-4"></i><h4 class="font-display mb-2">Prefeituras</h4><p class="text-sm text-gray-400">Solução inteligente para cidades inteligentes. Redução de lixo urbano e custos públicos.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Área do Usuário (Mobile Mockup) -->
+    <section id="area-usuario" class="py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="text-recicladin-blue font-semibold text-sm tracking-widest uppercase mb-4 block">Experiência do Usuário</span>
+                    <h2 class="text-3xl md:text-4xl font-display text-recicladin-text mb-6">Sua carteira digital de sustentabilidade.</h2>
+                    <p class="text-gray-600 mb-8 text-lg">Acompanhe seu impacto ambiental e gerencie seus ganhos em tempo real através de nossa interface intuitiva e moderna.</p>
+                    <ul class="space-y-4 mb-10">
+                        <li class="flex items-center gap-3 text-gray-700"><i data-lucide="arrow-up-right" class="w-4 h-4 text-recicladin-green"></i> Resgate instantâneo via PIX</li>
+                        <li class="flex items-center gap-3 text-gray-700"><i data-lucide="arrow-up-right" class="w-4 h-4 text-recicladin-green"></i> Histórico detalhado de reciclagem</li>
+                        <li class="flex items-center gap-3 text-gray-700"><i data-lucide="arrow-up-right" class="w-4 h-4 text-recicladin-green"></i> Ranking de impacto na sua cidade</li>
+                        <li class="flex items-center gap-3 text-gray-700"><i data-lucide="arrow-up-right" class="w-4 h-4 text-recicladin-green"></i> Opção de Retirada em Dinheiro na hora (sem celular/PIX)</li>
+                    </ul>
+                    <div class="flex gap-4">
+                        <button class="btn-secondary">Criar Minha Conta Agora</button>
+                        <button class="btn-outline flex items-center gap-2"><i data-lucide="banknote" class="w-4 h-4"></i> Retirada em Dinheiro</button>
+                    </div>
+                </div>
+                <div class="relative">
+                    <!-- Celular Mockup -->
+                    <div class="w-[320px] h-[640px] bg-recicladin-text rounded-[3rem] p-3 shadow-2xl mx-auto border-[8px] border-gray-800 relative">
+                        <div class="w-full h-full bg-recicladin-bg rounded-[2.5rem] overflow-hidden flex flex-col">
+                            <div class="p-6 bg-white flex justify-between items-center">
+                                <div><p class="text-[10px] text-gray-400 uppercase font-bold">Olá, João Silva</p><h4 class="text-sm font-bold">Eco Dashboard</h4></div>
+                                <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center"><i data-lucide="qr-code" class="w-4 h-4 text-recicladin-blue"></i></div>
+                            </div>
+                            <div class="p-4">
+                                <div class="bg-recicladin-blue p-5 rounded-2xl text-white shadow-lg">
+                                    <div class="flex justify-between mb-4"><i data-lucide="wallet" class="opacity-80"></i><span class="text-[10px] bg-white/20 px-2 py-1 rounded-full">Saldo Disponível</span></div>
+                                    <p class="text-2xl font-bold">R$ 142,50</p>
+                                    <p class="text-[10px] opacity-70">Equivalente a 285 garrafas PET</p>
+                                    <button class="w-full mt-4 bg-white text-recicladin-blue py-2 rounded-xl text-xs font-bold">Resgatar PIX</button>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3 px-4 mb-4"><div class="bg-white p-3 rounded-xl border border-gray-100"><p class="text-[8px] text-gray-400 uppercase font-bold mb-1">Total PET</p><p class="text-sm font-bold text-recicladin-green">1.240 kg</p></div><div class="bg-white p-3 rounded-xl border border-gray-100"><p class="text-[8px] text-gray-400 uppercase font-bold mb-1">CO2 Reduzido</p><p class="text-sm font-bold text-recicladin-blue">450 kg</p></div></div>
+                            <div class="flex-1 bg-white rounded-t-3xl p-6"><div class="flex justify-between items-center mb-4"><h5 class="text-xs font-bold">Atividade Recente</h5><span class="text-[10px] text-recicladin-blue font-bold">Ver tudo</span></div><div class="space-y-4"><div class="flex justify-between items-center"><div><p class="text-[10px] font-bold">Depósito PET - Máquina 04</p><p class="text-[8px] text-gray-400">Hoje, 14:20</p></div><p class="text-[10px] font-bold text-green-600">+ R$ 2,50</p></div><div class="flex justify-between items-center"><div><p class="text-[10px] font-bold">Resgate PIX</p><p class="text-[8px] text-gray-400">Ontem, 09:15</p></div><p class="text-[10px] font-bold text-red-600">- R$ 50,00</p></div><div class="flex justify-between items-center"><div><p class="text-[10px] font-bold">Depósito PET - Máquina 01</p><p class="text-[8px] text-gray-400">22 Fev, 18:30</p></div><p class="text-[10px] font-bold text-green-600">+ R$ 4,20</p></div></div></div>
+                            <div class="p-4 bg-white border-t border-gray-50 flex justify-around"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-dashboard w-5 h-5 text-recicladin-blue" aria-hidden="true"><rect width="7" height="9" x="3" y="3" rx="1"></rect><rect width="7" height="5" x="14" y="3" rx="1"></rect><rect width="7" height="9" x="14" y="12" rx="1"></rect><rect width="7" height="5" x="3" y="16" rx="1"></rect></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-history w-5 h-5 text-gray-300" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><path d="M12 7v5l4 2"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out w-5 h-5 text-gray-300" aria-hidden="true"><path d="m16 17 5-5-5-5"></path><path d="M21 12H9"></path><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path></svg></div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Nós (Nossa História) -->
+    <section id="sobre" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-10 items-center">
+                <div>
+                    <span class="text-recicladin-green font-semibold text-sm uppercase tracking-widest mb-4 block">Nossa História</span>
+                    <h2 class="text-3xl md:text-4xl font-display text-recicladin-text mb-6">Inovação brasileira para um desafio global.</h2>
+                    <p class="text-gray-600 mb-6 text-lg">Nascida no coração da Amazônia, em Itaituba, a RECICLADIN surgiu da necessidade de modernizar a gestão de resíduos sólidos através da tecnologia.</p>
+                    <p class="text-gray-600 mb-6 text-lg">Acreditamos que a reciclagem só será efetiva quando for conveniente, lucrativa e transparente. Por isso, desenvolvemos máquinas inteligentes que utilizam IA para fechar o ciclo do plástico de forma eficiente.</p>
+                    <div class="grid grid-cols-2 gap-8">
+                        <div><h4 class="font-display font-bold text-recicladin-green text-xl mb-2">Missão</h4><p class="text-sm text-gray-500">Utilizar tecnologia inteligente para transformar resíduos plásticos em valor econômico e ambiental.</p></div>
+                        <div><h4 class="font-display font-bold text-recicladin-blue text-xl mb-2">Visão</h4><p class="text-sm text-gray-500">Ser referência nacional em coleta automatizada de resíduos recicláveis até 2030.</p></div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://picsum.photos/seed/recycle1/300/400" class="rounded-3xl grayscale hover:grayscale-0 transition-all">
+                    <img src="https://picsum.photos/seed/tech1/300/400" class="rounded-3xl grayscale hover:grayscale-0 transition-all mt-12">
+                </div>
+            </div>
+            <div class=" mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"><div class="p-8 rounded-2xl bg-gray-50 border border-gray-100 hover:shadow-md transition-shadow" style="opacity: 1; transform: none;"><div class="text-recicladin-green mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield w-6 h-6" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg></div><h4 class="font-display font-bold mb-2">Transparência</h4><p class="text-sm text-gray-500">Dados abertos e rastreabilidade total do resíduo.</p></div><div class="p-8 rounded-2xl bg-gray-50 border border-gray-100 hover:shadow-md transition-shadow" style="opacity: 1; transform: none;"><div class="text-recicladin-green mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lightbulb w-6 h-6" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path><path d="M9 18h6"></path><path d="M10 22h4"></path></svg></div><h4 class="font-display font-bold mb-2">Inovação</h4><p class="text-sm text-gray-500">IA de ponta para análise de materiais.</p></div><div class="p-8 rounded-2xl bg-gray-50 border border-gray-100 hover:shadow-md transition-shadow" style="opacity: 1; transform: none;"><div class="text-recicladin-green mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users w-6 h-6" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><path d="M16 3.128a4 4 0 0 1 0 7.744"></path><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><circle cx="9" cy="7" r="4"></circle></svg></div><h4 class="font-display font-bold mb-2">Responsabilidade</h4><p class="text-sm text-gray-500">Foco no impacto social e geração de renda.</p></div><div class="p-8 rounded-2xl bg-gray-50 border border-gray-100 hover:shadow-md transition-shadow" style="opacity: 1; transform: none;"><div class="text-recicladin-green mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target w-6 h-6" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg></div><h4 class="font-display font-bold mb-2">Eficiência</h4><p class="text-sm text-gray-500">Processos otimizados para máxima escala.</p></div></div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="bg-white pt-24 pb-12 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div>
+                    <img src="https://i.postimg.cc/0Ng6JyVR/logomarca-recicladin-Copia-(2).png" alt="Logo" class="h-16 w-auto mb-6">
+                    <p class="text-gray-500 text-sm">Transformando plástico em oportunidade através de tecnologia inteligente.</p>
+                </div>
+                <div>
+                    <h4 class="font-display font-bold text-sm uppercase tracking-widest mb-6">Links</h4>
+                    <ul class="space-y-4 text-sm text-gray-500">
+                        <li><a href="#como-funciona">Como Funciona</a></li>
+                        <li><a href="#impacto">Impacto Ambiental</a></li>
+                        <li><a href="#parceiros">Seja um Parceiro</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-display font-bold text-sm uppercase tracking-widest mb-6">Institucional</h4>
+                    <ul class="space-y-4 text-sm text-gray-500">
+                        <li><a href="#sobre">Sobre Nós</a></li>
+                        <li><a href="#">Privacidade</a></li>
+                        <li><a href="#">Termos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-display font-bold text-sm uppercase tracking-widest mb-6">Contato</h4>
+                    <ul class="space-y-4 text-sm text-gray-500">
+                        <li class="flex gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-recicladin-green"></i> Itaituba/PA</li>
+                        <li class="flex gap-2"><i data-lucide="phone" class="w-4 h-4 text-recicladin-green"></i> (93) 3518-0000</li>
+                        <li class="flex gap-2"><i data-lucide="mail" class="w-4 h-4 text-recicladin-green"></i> contato@recicladin.com.br</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400 gap-4">
+                <p>© 2026 RECICLADIN – O Ciclo que Renova. Todos os direitos reservados.</p>
+                <p>CNPJ: 00.000.000/0001-00</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.classList.add('bg-white/80', 'backdrop-blur-md', 'shadow-sm');
+                nav.classList.remove('py-6');
+                nav.classList.add('py-4');
+            } else {
+                nav.classList.remove('bg-white/80', 'backdrop-blur-md', 'shadow-sm');
+                nav.classList.add('py-6');
+                nav.classList.remove('py-4');
+            }
+        });
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Animated Counters
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+        const observerOptions = { threshold: 0.5 };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const updateCount = () => {
+                        const target = +counter.getAttribute('data-target');
+                        const count = +counter.innerText;
+                        const inc = target / speed;
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + inc);
+                            setTimeout(updateCount, 10);
+                        } else {
+                            counter.innerText = target.toLocaleString('pt-BR');
+                        }
+                    };
+                    updateCount();
+                    observer.unobserve(counter);
+                }
+            });
+        }, observerOptions);
+
+        counters.forEach(counter => observer.observe(counter));
+
+        // Machine Carousel Logic
+        const machines = [
+            { id: 1, name: "Supermercado Central", address: "Av. Getúlio Vargas, 450", total: "12.450", month: "2.150" },
+            { id: 2, name: "Praça do Cidadão", address: "Rua das Flores, S/N", total: "8.900", month: "1.420" },
+            { id: 3, name: "Terminal Rodoviário", address: "Rodovia Transamazônica, KM 1", total: "15.600", month: "3.100" }
+        ];
+        let currentIdx = 0;
+
+        function updateCarousel() {
+            const m = machines[currentIdx];
+            document.getElementById('machine-name').innerText = m.name;
+            document.getElementById('machine-address').innerText = m.address;
+            document.getElementById('machine-total').innerText = m.total;
+            document.getElementById('machine-month').innerText = m.month;
+            document.getElementById('machine-id').innerText = `Ponto de Coleta #0${m.id}`;
+            document.getElementById('machine-img').src = `https://picsum.photos/seed/machine-${m.id}/800/800`;
+            document.getElementById('realtime-val').innerText = Math.floor(Math.random() * 5) + 1;
+        }
+
+        function nextMachine() { currentIdx = (currentIdx + 1) % machines.length; updateCarousel(); }
+        function prevMachine() { currentIdx = (currentIdx - 1 + machines.length) % machines.length; updateCarousel(); }
+
+        // Real-time update simulation
+        setInterval(() => {
+            document.getElementById('realtime-val').innerText = Math.floor(Math.random() * 5) + 1;
+        }, 3000);
+    </script>
+</body>
+</html>
